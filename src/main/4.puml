@@ -1,0 +1,15 @@
+@startuml
+actor Establishment
+
+Establishment -> (Receive Order)
+Establishment -> (Prepare Order)
+Establishment -> (Mark Order as Ready)
+Establishment -> (Notify Courier)
+Establishment -> (Confirm Order Delivered)
+
+(Receive Order) --> (Prepare Order\nSet Status "In progress") : Order Accepted
+(Prepare Order) --> (Mark Order as Ready \n Set Status "Ready for delivering") : Order Ready
+(Mark Order as Ready) --> (Notify Courier) : Notify Courier
+(Notify Courier) --> (Confirm Order Delivered) : Courier Picks Up
+
+@enduml

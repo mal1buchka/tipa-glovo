@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  glovo-postgres:
+    image: postgres:15-alpine
+    restart: always
+    container_name: db-pg
+    environment:
+      POSTGRES_USER: glovoTeam
+      POSTGRES_PASSWORD: glovoTeam
+      POSTGRES_DB: glovoDB
+    ports:
+      - "5442:5432"
+    volumes:
+      - glovo-data:/var/lib/postgresql/data
+
+volumes:
+  glovo-data:

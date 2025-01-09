@@ -1,0 +1,19 @@
+@startuml
+actor Admin
+
+Admin -> (Manage Users)
+Admin -> (Manage Products)
+Admin -> (Manage Establishments)
+Admin -> (View Order History)
+Admin -> (Generate Reports)
+
+(Manage Users) --> (View User Details) : Manage
+(Manage Products) --> (Add Product) : Add New Product
+(Manage Products) --> (Update Product) : Update Product Details
+(Manage Products) --> (Remove Product) : Remove Product
+(Manage Establishments) --> (Add Establishment) : Register New Establishment
+(Manage Establishments) --> (Update Establishment) : Update Establishment Info
+(View Order History) --> (View Order Details) : View All Orders
+(Generate Reports) --> (View Sales Report) : Generate Monthly Report
+
+@enduml

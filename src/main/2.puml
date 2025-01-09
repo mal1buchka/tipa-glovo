@@ -1,0 +1,43 @@
+@startuml
+
+' Entities
+class Category {
+    +id: int
+    +name: string
+}
+
+class CategoryFilter {
+    +id: int
+    +name: string
+}
+
+class Subcategory {
+    +id: int
+    +name: string
+}
+
+class SubcategoryFilter {
+    +id: int
+    +name: string
+}
+
+class Establishment {
+    +id: int
+    +name: string
+    +subcategory: string
+}
+
+class Product {
+    +id: int
+    +name: string
+    +price: decimal
+}
+
+' Relationships
+Category "1" -- "0..*" CategoryFilter : applies to
+Category "1" -- "0..*" Subcategory : contains
+Subcategory "1" -- "0..*" SubcategoryFilter : has filters
+Establishment "1" -- "0..*" Product : offers
+Establishment "1" -- "0..*" Subcategory : belongs to
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+actor User
+
+User -> (Browse Products)
+User -> (Add to Cart)
+User -> (Checkout)
+User -> (Make Payment)
+User -> (Track Order)
+User -> (Receive Order)
+User -> (View Order History)
+
+(Browse Products) --> (Add to Cart, \nRemove from cart) : Browse & Add
+(Add to Cart) --> (Checkout) : Review Cart
+(Checkout) --> (Make Payment) : Confirm Details
+(Make Payment) --> (Track Order) : Order Paid
+(Track Order) --> (Receive Order) : Track Delivery
+(Receive Order) --> (View Order History) : View Past Orders
+
+@enduml
+

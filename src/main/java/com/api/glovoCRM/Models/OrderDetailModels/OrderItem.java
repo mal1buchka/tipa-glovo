@@ -2,7 +2,6 @@ package com.api.glovoCRM.Models.OrderDetailModels;
 
 import com.api.glovoCRM.Models.BaseEntity;
 import com.api.glovoCRM.Models.EstablishmentModels.Product;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;

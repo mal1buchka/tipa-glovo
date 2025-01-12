@@ -1,11 +1,11 @@
 package com.api.glovoCRM.Models.EstablishmentModels;
 
 import com.api.glovoCRM.Models.BaseEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,4 +25,18 @@ public class Product extends BaseEntity {
     private String image;
 
     private boolean active = true;
+
+    @OneToOne(mappedBy = "product_id", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private DiscountProduct discountProduct;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
+    private Establishment establishment;
+
+    @ManyToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "establishment_filter_id")
+    )
+    private Set<Establishment_filter> establishmentFilter;
 }

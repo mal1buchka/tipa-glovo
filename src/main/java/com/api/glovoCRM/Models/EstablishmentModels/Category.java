@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,6 +21,6 @@ public class Category extends BaseEntity {
 
     private String image;
 
-    @OneToMany(mappedBy = "category_id", orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<SubCategory> subCategory;
+    @OneToMany(mappedBy = "category_id")
+    private Set<SubCategory> subCategory;
 }

@@ -13,6 +13,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -40,6 +41,10 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private EUserStatuses status;
 
+    //private Integer failedAttempt;
+
+    //private LocalDateTime lockTime;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles",
                 joinColumns = @JoinColumn(name = "user_id"),
@@ -53,8 +58,20 @@ public class User extends BaseEntity implements UserDetails {
     private List<OrderDetail> orders = new ArrayList<>();
 
     @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream().map(role -> new SimpleGrantedAuthority("ROLE_"+role.getName().name())).collect(Collectors.toList());
+        return roles.stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName().name())) // Используем .name() для ERoles
+                .collect(Collectors.toList());
     }
 
     @Override

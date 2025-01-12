@@ -24,6 +24,8 @@ public class SubCategory extends BaseEntity {
     private Category category;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "subcategory_id", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "subcategory", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Establishment> establishment;
+
+
 }

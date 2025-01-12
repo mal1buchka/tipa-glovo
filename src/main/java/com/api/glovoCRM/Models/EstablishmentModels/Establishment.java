@@ -33,9 +33,13 @@ public class Establishment extends BaseEntity {
 
     private boolean isOpen; //вопрос ребятам как это потом реализовать
 
-    @OneToMany(mappedBy = "establishment_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "establishment", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Product> product;
 
-    @OneToMany(mappedBy = "establishment_id", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Establishment_filter> establishment_filter;
+    @OneToMany(mappedBy = "establishment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<EstablishmentFilter> establishment_filter;
+
+    @ManyToOne
+    @JoinColumn(name = "subcategory_id")
+    private SubCategory subcategory;
 }

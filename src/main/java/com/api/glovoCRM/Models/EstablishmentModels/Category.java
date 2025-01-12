@@ -21,6 +21,6 @@ public class Category extends BaseEntity {
 
     private String image;
 
-    @OneToMany(mappedBy = "category_id")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<SubCategory> subCategory;
 }

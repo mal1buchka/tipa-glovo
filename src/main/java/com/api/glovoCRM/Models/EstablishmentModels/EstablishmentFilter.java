@@ -10,18 +10,19 @@ import lombok.Setter;
 import java.util.Set;
 
 @Entity
-@Table(name = "establishments_filters")
+@Table(name = "EstablishmentFilter")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Establishment_filter extends BaseEntity {
+public class EstablishmentFilter extends BaseEntity {
 
     private String name;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "establishment_id")
     private Establishment establishment;
 
-    @ManyToMany(mappedBy = "establishment_filter_id")
+    @ManyToMany(mappedBy = "establishmentFilters")
     private Set<Product> products;
 }

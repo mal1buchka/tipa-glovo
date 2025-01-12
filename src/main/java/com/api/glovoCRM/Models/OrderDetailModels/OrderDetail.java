@@ -24,17 +24,17 @@ public class OrderDetail extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private EStatusOrderDetail status;
 
-    @OneToMany(mappedBy = "orderItem_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orderDetail", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderItem> orderItems;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(mappedBy = "orderDetail_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "orderDetail", cascade = CascadeType.ALL, orphanRemoval = true)
     private PaymentDetail paymentDetail;
 
-    @OneToOne(mappedBy = "orderDetail_id", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(mappedBy = "orderDetail", cascade = CascadeType.ALL, orphanRemoval = true)
     private Address address;
 
 }

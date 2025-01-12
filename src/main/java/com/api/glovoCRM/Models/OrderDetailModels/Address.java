@@ -22,6 +22,7 @@ public class Address extends BaseEntity {
 
     private String peculiarity;
 
+
     @OneToOne
     @JoinColumn(name = "orderDetail_id")
     private OrderDetail orderDetail;

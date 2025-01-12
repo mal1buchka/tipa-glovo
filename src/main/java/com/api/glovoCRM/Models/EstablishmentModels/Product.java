@@ -26,17 +26,18 @@ public class Product extends BaseEntity {
 
     private boolean active = true;
 
-    @OneToOne(mappedBy = "product_id", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "product", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private DiscountProduct discountProduct;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "establishment_id")
     private Establishment establishment;
 
     @ManyToMany
     @JoinTable(
+            name = "product_establishment_filter",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "establishment_filter_id")
     )
-    private Set<Establishment_filter> establishmentFilter;
+    private Set<EstablishmentFilter> establishmentFilters;
 }
